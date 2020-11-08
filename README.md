@@ -4,13 +4,7 @@ Clint, Your horrible kind-of-annoying useless virtual friend
 
 Powered by [Quasar](https://quasar.dev/), [Electron](https://www.electronjs.org/), [SpeechRecognition](https://pypi.org/project/SpeechRecognition/)
 
-<img src="https://avatars3.githubusercontent.com/u/23064371?s=200&v=4" alt="drawing" height="30"/>
-<img src="https://cdn.iconscout.com/icon/free/png-256/vue-282497.png" alt="drawing" height="30"/>
-<img src="https://cdn.iconscout.com/icon/free/png-256/electron-67-1175035.png" alt="drawing" height="30"/>
-<img src="https://cdn.iconscout.com/icon/free/png-256/node-js-1-1174935.png" alt="drawing" height="30"/>
-<img src="https://cdn.iconscout.com/icon/free/png-512/typescript-1174965.png" alt="drawing" height="30"/>
-<img src="https://cdn.iconscout.com/icon/free/png-256/javascript-1-225993.png" alt="drawing" height="29"/>
-<img src="https://cdn.iconscout.com/icon/free/png-256/python-2-226051.png" alt="drawing" height="30"/>
+<img src="https://avatars3.githubusercontent.com/u/23064371?s=200&v=4" alt="drawing" height="30"/>  <img src="https://cdn.iconscout.com/icon/free/png-256/vue-282497.png" alt="drawing" height="30"/>  <img src="https://cdn.iconscout.com/icon/free/png-256/electron-67-1175035.png" alt="drawing" height="30"/>  <img src="https://cdn.iconscout.com/icon/free/png-256/node-js-1-1174935.png" alt="drawing" height="30"/>  <img src="https://cdn.iconscout.com/icon/free/png-512/typescript-1174965.png" alt="drawing" height="30"/>  <img src="https://cdn.iconscout.com/icon/free/png-256/javascript-1-225993.png" alt="drawing" height="30"/>  <img src="https://cdn.iconscout.com/icon/free/png-256/python-2-226051.png" alt="drawing" height="30"/>
 
 # How to Install
 
