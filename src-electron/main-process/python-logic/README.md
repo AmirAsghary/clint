@@ -12,8 +12,8 @@ Not using it, the class will use your system's default Python path which may not
 after installing Python 3.6.x and adding it to your system's "environment variables",
 use 'setPythonPath(path) to point the app to the right python version'
 ```
-<img src=".github/python_readme/exENV.png" alt="drawing" height="264"/>
-<img src=".github/python_readme/setENV.png" alt="drawing"/>
+<img src=".github/exENV.png" alt="drawing" height="264"/>
+<img src=".github/setENV.png" alt="drawing"/>
 </details>
 
 <br/>
