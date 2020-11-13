@@ -21,14 +21,35 @@ class DBHandler {
     private readonly paths = conf_paths;
 
     constructor() {
-        serialNumber((err:any, value:string) => {
-            console.log(value)
-            this.key = crypto.createHash('sha256').update(String(value)).digest('base64').substr(0, 32);
-            this.appear = this.load_files(this.configs.APPEARANCE);
-            this.preference = this.load_files(this.configs.PREFERENCE);
-        });
+        this.key_generator().then((res)=>{
+            this.file_guard().then((res)=>{
+                console.log(this.key)
+                this.appear = this.load_files(this.configs.APPEARANCE);
+                this.preference = this.load_files(this.configs.PREFERENCE);
+            })
+        })
     }
 
+    private file_guard():Promise<boolean> {
+        return new Promise((resolve, reject) => {
+            if(!fs.existsSync(this.paths.APPEARANCE) || fs.readFileSync(this.paths.APPEARANCE).length<2){
+                this.save_files(this.configs.APPEARANCE, JSON.stringify({}))
+            }
+            if(!fs.existsSync(this.paths.PREFERENCE) || fs.readFileSync(this.paths.PREFERENCE).length<2){
+                this.save_files(this.configs.PREFERENCE, JSON.stringify({}))
+            }
+
+            resolve(true)
+        });
+    }
+    private key_generator():Promise<boolean> {
+        return new Promise<boolean>(((resolve, reject) => {
+            serialNumber((err:any, value:string) => {
+                this.key = crypto.createHash('sha256').update(String(value)).digest('base64').substr(0, 32);
+                resolve(true)
+            });
+        }))
+    }
     private load_files(config:number):object {
 
         const decrypt = (encrypted:Buffer) => {
@@ -48,7 +69,6 @@ class DBHandler {
                 return {'ass':'duck'}
         }
     }
-
     private save_files(config:number, data:any):boolean {
 
         const encrypt = (buffer: Buffer) => {

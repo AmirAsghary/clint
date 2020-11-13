@@ -1,5 +1,5 @@
-import fs from 'fs';
-import crypto from 'crypto';
+import * as fs from 'fs';
+import * as crypto from 'crypto';
 import serialNumber from 'serial-number';
 var conf_files;
 (function (conf_files) {
@@ -17,12 +17,32 @@ class DBHandler {
         this.key = '';
         this.configs = conf_files;
         this.paths = conf_paths;
-        serialNumber((err, value) => {
-            console.log(value);
-            this.key = crypto.createHash('sha256').update(String(value)).digest('base64').substr(0, 32);
-            this.appear = this.load_files(this.configs.APPEARANCE);
-            this.preference = this.load_files(this.configs.PREFERENCE);
+        this.key_generator().then((res) => {
+            this.file_guard().then((res) => {
+                console.log(this.key);
+                this.appear = this.load_files(this.configs.APPEARANCE);
+                this.preference = this.load_files(this.configs.PREFERENCE);
+            });
         });
+    }
+    file_guard() {
+        return new Promise((resolve, reject) => {
+            if (!fs.existsSync(this.paths.APPEARANCE) || fs.readFileSync(this.paths.APPEARANCE).length < 2) {
+                this.save_files(this.configs.APPEARANCE, JSON.stringify({}));
+            }
+            if (!fs.existsSync(this.paths.PREFERENCE) || fs.readFileSync(this.paths.PREFERENCE).length < 2) {
+                this.save_files(this.configs.PREFERENCE, JSON.stringify({}));
+            }
+            resolve(true);
+        });
+    }
+    key_generator() {
+        return new Promise(((resolve, reject) => {
+            serialNumber((err, value) => {
+                this.key = crypto.createHash('sha256').update(String(value)).digest('base64').substr(0, 32);
+                resolve(true);
+            });
+        }));
     }
     load_files(config) {
         const decrypt = (encrypted) => {

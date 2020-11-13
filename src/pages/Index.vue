@@ -3,12 +3,40 @@
         <div id="back" style="background-color: #000000"></div>
         <div id="front" style="background-color: #000b17"></div>
 
-        <div class="q-pt-md column items-center justify-between" style="height: 90vh">
-            <div class="row">
-
+        <div class="q-pt-md items-center justify-between" style="height: 90vh">
+            <div class="">
+                <q-carousel
+                        v-model="hubContent.slide"
+                        transition-prev="slide-right"
+                        transition-next="slide-left"
+                        animated
+                        control-color="primary"
+                        class="rounded-borders q-mx-lg q-mt-xs"
+                        height="300px"
+                        style="background-color: rgba(0,0,0,0.31)"
+                >
+                    <q-carousel-slide name="style" class="column no-wrap flex-center">
+                        test
+                    </q-carousel-slide>
+                    <q-carousel-slide name="tv" class="column no-wrap flex-center">
+                        lick my balls
+                    </q-carousel-slide>
+                    <q-carousel-slide name="layers" class="column no-wrap flex-center">
+                        <q-icon name="layers" color="primary" size="56px" />
+                        <div class="q-mt-md text-center">
+                            asda############sadasd
+                        </div>
+                    </q-carousel-slide>
+                    <q-carousel-slide name="map" class="column no-wrap flex-center">
+                        <q-icon name="terrain" color="primary" size="56px" />
+                        <div class="q-mt-md text-center">
+                            asd&&&&&&&&&&&&&asdasdasd
+                        </div>
+                    </q-carousel-slide>
+                </q-carousel>
             </div>
 
-            <div class="row items-center">
+            <div class="=">
                 <!--            <av-media-->
                 <!--                    style="position: relative; left: 20px;"-->
                 <!--                    :frequ-line-cap="true" :frequ-lnum="500" :line-width="1"-->
@@ -21,6 +49,8 @@
                         color="transparent"
                         size="30px"
                         icon="mic"
+                        style="left: 40%"
+                        class="q-mt-md"
                 />
             </div>
         </div>
@@ -131,6 +161,7 @@
                     ]
                 },
                 hubContent:{
+                    slide:'tv',
                     date:{
                         time: null,
                         day: null

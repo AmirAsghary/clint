@@ -12,11 +12,13 @@ class Clint {
     }
 
     wakeup() {
-        let pyshell = new PythonShell('src-electron/main-process/python-logic/main.py', this.#options);
+        // let pyshell = new PythonShell('src-electron/main-process/python-logic/main.py', this.#options);
+		//
+        // pyshell.on('message', function (message) {
+        //     console.log(message);
+        // });
 
-        pyshell.on('message', function (message) {
-            console.log(message);
-        });
+
     }
 
     setPythonPath(path) {

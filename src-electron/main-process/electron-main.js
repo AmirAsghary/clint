@@ -100,12 +100,19 @@ app.on('activate', () => {
 // let clint = new Clint()
 // clint.setPythonPath('PYTHON36')
 // clint.wakeup()
-//
-import {DBHandler} from './dbHandler/dbHandler.js'
+// import {DBHandler} from './dbHandler/dbHandler.js'
+// let sdd = new DBHandler()
 
-let sdd = new DBHandler()
-sdd.DEV_refresh().then((res) => {
-  if(res){
-    console.log(sdd.get_appear().toString())
-  }
+const {spawn} = require('child_process');
+const python = spawn('python36', ['src-electron/main-process/python-logic/main.py', '--inspect flag']);
+// collect data from script
+python.stdout.on('data', function (data) {
+  console.log('Pipe data from python script ...');
+  let dataToSend = data.toString();
+  console.log(JSON.parse(dataToSend).depatment)
+});
+// in close event we are sure that stream from child process is closed
+python.on('close', (code) => {
+  console.log(`child process close all stdio with code ${code}`);
+  // send data to browser
 });
